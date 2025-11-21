@@ -1,0 +1,35 @@
+{
+  "name": "coach-motivazionale-pro",
+  "version": "2.0.0",
+  "description": "Coach Motivazionale PRO - Versione 10/10 con AI, Gamification, Database",
+  "main": "coach-pro.js",
+  "scripts": {
+    "start": "node coach-pro.js",
+    "dev": "nodemon coach-pro.js"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "coach",
+    "motivazione",
+    "ai",
+    "gamification"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.64.0",
+    "better-sqlite3": "^9.2.2",
+    "node-cron": "^3.0.3",
+    "axios": "^1.6.2",
+    "chartjs-node-canvas": "^4.1.6",
+    "chart.js": "^4.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
+
