@@ -1,0 +1,9 @@
+geopandas>=0.13.0
+matplotlib>=3.7.0
+Pillow>=10.0.0
+numpy>=1.24.0
+imageio>=2.31.0
+imageio-ffmpeg>=0.4.9
+shapely>=2.0.0
+pyproj>=3.6.0
+geodatasets>=2023.3.0

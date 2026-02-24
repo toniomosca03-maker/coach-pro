@@ -1,0 +1,326 @@
+{
+  "metadata": {
+    "titolo": "La Guerra in Ucraina — Analisi Geopolitica 2024",
+    "canale": "Scacchiera Mondiale",
+    "risoluzione": "1920x1080",
+    "fps": 30,
+    "tema": "scuro"
+  },
+  "scene": [
+    {
+      "id": 1,
+      "durata": 8,
+      "titolo": "Il Contesto: Russia e Ucraina",
+      "sottotitolo": "Europa Orientale — 2024",
+      "mappa": {
+        "centro": { "lat": 53, "lon": 30 },
+        "zoom": 3,
+        "sfondo": "#1a1a2e",
+        "oceani": "#0f3460"
+      },
+      "paesi": [
+        {
+          "nome": "Russia",
+          "colore": "#e67e22",
+          "opacita": 0.75,
+          "etichetta": "Russia",
+          "animazione": "fade_in"
+        },
+        {
+          "nome": "Ukraine",
+          "colore": "#e74c3c",
+          "opacita": 0.85,
+          "etichetta": "Ucraina",
+          "animazione": "fade_in"
+        },
+        {
+          "nome": "Belarus",
+          "colore": "#e67e22",
+          "opacita": 0.5,
+          "etichetta": "",
+          "animazione": "nessuna"
+        },
+        {
+          "nome": "Poland",
+          "colore": "#2980b9",
+          "opacita": 0.6,
+          "etichetta": "Polonia (NATO)",
+          "animazione": "nessuna"
+        },
+        {
+          "nome": "Romania",
+          "colore": "#2980b9",
+          "opacita": 0.5,
+          "etichetta": "",
+          "animazione": "nessuna"
+        },
+        {
+          "nome": "Hungary",
+          "colore": "#2980b9",
+          "opacita": 0.4,
+          "etichetta": "",
+          "animazione": "nessuna"
+        }
+      ],
+      "frecce": [],
+      "icone": [
+        {
+          "tipo": "capitale",
+          "lat": 50.45,
+          "lon": 30.52,
+          "etichetta": "Kiev"
+        },
+        {
+          "tipo": "capitale",
+          "lat": 55.75,
+          "lon": 37.62,
+          "etichetta": "Mosca"
+        }
+      ],
+      "testo_overlay": [
+        {
+          "testo": "Due paesi, una guerra che cambia la storia",
+          "posizione": "alto",
+          "dimensione": 28,
+          "colore": "#e8e8f0",
+          "sfondo": "#0f3460"
+        }
+      ],
+      "transizione": {
+        "tipo": "fade",
+        "durata": 0.8
+      }
+    },
+    {
+      "id": 2,
+      "durata": 10,
+      "titolo": "L'Avanzata Russa — Linee del Fronte",
+      "sottotitolo": "Est dell'Ucraina",
+      "mappa": {
+        "centro": { "lat": 49, "lon": 35 },
+        "zoom": 5,
+        "sfondo": "#1a1a2e",
+        "oceani": "#0f3460"
+      },
+      "paesi": [
+        {
+          "nome": "Ukraine",
+          "colore": "#3498db",
+          "opacita": 0.7,
+          "etichetta": "Ucraina",
+          "animazione": "nessuna"
+        },
+        {
+          "nome": "Russia",
+          "colore": "#e67e22",
+          "opacita": 0.65,
+          "etichetta": "Russia",
+          "animazione": "nessuna"
+        }
+      ],
+      "frecce": [
+        {
+          "da": { "lat": 47.9, "lon": 33.4 },
+          "a":  { "lat": 48.5, "lon": 37.0 },
+          "colore": "#e74c3c",
+          "spessore": 4,
+          "etichetta": "Avanzata Sud-Est",
+          "stile": "solido"
+        },
+        {
+          "da": { "lat": 51.5, "lon": 33.0 },
+          "a":  { "lat": 50.0, "lon": 36.2 },
+          "colore": "#e74c3c",
+          "spessore": 3,
+          "etichetta": "Pressione Nord",
+          "stile": "solido"
+        },
+        {
+          "da": { "lat": 47.6, "lon": 37.5 },
+          "a":  { "lat": 47.9, "lon": 35.1 },
+          "colore": "#27ae60",
+          "spessore": 3,
+          "etichetta": "Controffensiva UA",
+          "stile": "tratteggiato"
+        }
+      ],
+      "icone": [
+        {
+          "tipo": "zona_conflitto",
+          "lat": 48.0,
+          "lon": 37.8,
+          "etichetta": "Donetsk"
+        },
+        {
+          "tipo": "zona_conflitto",
+          "lat": 48.7,
+          "lon": 38.1,
+          "etichetta": "Luhansk"
+        },
+        {
+          "tipo": "base_militare",
+          "lat": 44.95,
+          "lon": 34.1,
+          "etichetta": "Crimea"
+        }
+      ],
+      "testo_overlay": [],
+      "transizione": {
+        "tipo": "fade",
+        "durata": 0.6
+      }
+    },
+    {
+      "id": 3,
+      "durata": 8,
+      "titolo": "Il Sostegno Occidentale",
+      "sottotitolo": "NATO e forniture militari",
+      "mappa": {
+        "centro": { "lat": 52, "lon": 15 },
+        "zoom": 2.8,
+        "sfondo": "#1a1a2e",
+        "oceani": "#0f3460"
+      },
+      "paesi": [
+        {
+          "nome": "Ukraine",
+          "colore": "#f1c40f",
+          "opacita": 0.9,
+          "etichetta": "Ucraina",
+          "animazione": "pulse"
+        },
+        {
+          "nome": "United States of America",
+          "colore": "#2980b9",
+          "opacita": 0.5,
+          "etichetta": "USA",
+          "animazione": "fade_in"
+        },
+        {
+          "nome": "Germany",
+          "colore": "#2980b9",
+          "opacita": 0.5,
+          "etichetta": "Germania",
+          "animazione": "fade_in"
+        },
+        {
+          "nome": "France",
+          "colore": "#2980b9",
+          "opacita": 0.5,
+          "etichetta": "Francia",
+          "animazione": "fade_in"
+        },
+        {
+          "nome": "United Kingdom",
+          "colore": "#2980b9",
+          "opacita": 0.5,
+          "etichetta": "UK",
+          "animazione": "fade_in"
+        },
+        {
+          "nome": "Poland",
+          "colore": "#27ae60",
+          "opacita": 0.6,
+          "etichetta": "Polonia",
+          "animazione": "nessuna"
+        }
+      ],
+      "frecce": [
+        {
+          "da": { "lat": 52.5, "lon": 13.4 },
+          "a":  { "lat": 50.4, "lon": 30.5 },
+          "colore": "#2980b9",
+          "spessore": 3,
+          "etichetta": "Armi EU",
+          "stile": "punteggiato"
+        },
+        {
+          "da": { "lat": 51.5, "lon": 21.0 },
+          "a":  { "lat": 50.4, "lon": 30.5 },
+          "colore": "#27ae60",
+          "spessore": 3,
+          "etichetta": "Polonia",
+          "stile": "punteggiato"
+        }
+      ],
+      "icone": [
+        {
+          "tipo": "base_militare",
+          "lat": 50.4,
+          "lon": 30.5,
+          "etichetta": "Kiev"
+        }
+      ],
+      "testo_overlay": [
+        {
+          "testo": "Miliardi di dollari in aiuti militari",
+          "posizione": "alto",
+          "dimensione": 30,
+          "colore": "#f1c40f",
+          "sfondo": "#0f3460"
+        }
+      ],
+      "transizione": {
+        "tipo": "fade",
+        "durata": 0.6
+      }
+    },
+    {
+      "id": 4,
+      "durata": 7,
+      "titolo": "Conseguenze Geopolitiche Globali",
+      "sottotitolo": "Il nuovo ordine mondiale",
+      "mappa": {
+        "centro": { "lat": 30, "lon": 20 },
+        "zoom": 1.2,
+        "sfondo": "#1a1a2e",
+        "oceani": "#0f3460"
+      },
+      "paesi": [
+        {
+          "nome": "Russia",
+          "colore": "#e67e22",
+          "opacita": 0.7,
+          "etichetta": "",
+          "animazione": "fade_in"
+        },
+        {
+          "nome": "China",
+          "colore": "#e74c3c",
+          "opacita": 0.55,
+          "etichetta": "",
+          "animazione": "fade_in"
+        },
+        {
+          "nome": "United States of America",
+          "colore": "#2980b9",
+          "opacita": 0.55,
+          "etichetta": "",
+          "animazione": "fade_in"
+        },
+        {
+          "nome": "Ukraine",
+          "colore": "#f1c40f",
+          "opacita": 0.85,
+          "etichetta": "",
+          "animazione": "nessuna"
+        }
+      ],
+      "frecce": [],
+      "icone": [],
+      "testo_overlay": [
+        {
+          "testo": "La guerra che sta ridisegnando gli equilibri globali",
+          "posizione": "basso",
+          "dimensione": 32,
+          "colore": "#ffffff",
+          "sfondo": "#0f3460"
+        }
+      ],
+      "transizione": {
+        "tipo": "fade",
+        "durata": 1.0
+      }
+    }
+  ]
+}
