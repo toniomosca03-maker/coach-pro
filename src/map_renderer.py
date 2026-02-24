@@ -28,19 +28,37 @@ from PIL import Image, ImageDraw, ImageFont
 # ---------------------------------------------------------------------------
 import geopandas as gpd
 
+_NAME_COLUMN_CANDIDATES = ["name", "NAME", "NAME_LONG", "ADMIN", "SOVEREIGNT"]
+
+
+def _normalize_name_column(gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
+    """Rinomina la colonna dei nomi paese in 'name' per accesso uniforme."""
+    if "name" in gdf.columns:
+        return gdf
+    for candidate in _NAME_COLUMN_CANDIDATES[1:]:
+        if candidate in gdf.columns:
+            return gdf.rename(columns={candidate: "name"})
+    raise RuntimeError(
+        f"Nessuna colonna nome trovata nel dataset geografico. "
+        f"Colonne disponibili: {list(gdf.columns)}"
+    )
+
+
 def _load_world() -> gpd.GeoDataFrame:
     """Carica il dataset Natural Earth con fallback multipli."""
     # 1. geodatasets (geopandas >= 0.14)
     try:
         import geodatasets
-        return gpd.read_file(geodatasets.get_path("naturalearth.countries110"))
+        gdf = gpd.read_file(geodatasets.get_path("naturalearth.countries110"))
+        return _normalize_name_column(gdf)
     except Exception:
         pass
     # 2. API legacy geopandas < 0.14
     try:
         with warnings.catch_warnings():
             warnings.simplefilter("ignore")
-            return gpd.read_file(gpd.datasets.get_path("naturalearth_lowres"))
+            gdf = gpd.read_file(gpd.datasets.get_path("naturalearth_lowres"))
+            return _normalize_name_column(gdf)
     except Exception:
         pass
     # 3. Download diretto da Natural Earth
@@ -48,7 +66,8 @@ def _load_world() -> gpd.GeoDataFrame:
         "https://naturalearth.s3.amazonaws.com/110m_cultural/"
         "ne_110m_admin_0_countries.zip"
     )
-    return gpd.read_file(url)
+    gdf = gpd.read_file(url)
+    return _normalize_name_column(gdf)
 
 
 _WORLD: Optional[gpd.GeoDataFrame] = None
