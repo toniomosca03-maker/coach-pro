@@ -585,11 +585,11 @@ class ScacchieraMondiale(tk.Tk):
                     f"Video generato con successo!\n\n{output}"
                 ))
             except Exception as exc:
-                self.after(0, lambda: messagebox.showerror(
+                self.after(0, lambda e=exc: messagebox.showerror(
                     "Errore generazione",
-                    f"Si è verificato un errore:\n{exc}"
+                    f"Si è verificato un errore:\n{e}"
                 ))
-                self.after(0, lambda: self._set_status(f"Errore: {exc}"))
+                self.after(0, lambda e=exc: self._set_status(f"Errore: {e}"))
             finally:
                 self._generating = False
                 self.after(0, lambda: self._btn_generate.config(state="normal"))
