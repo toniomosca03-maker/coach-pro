@@ -1,0 +1,382 @@
+{
+  "metadata": {
+    "titolo": "Il Medio Oriente — Tensioni e Conflitti 2024",
+    "canale": "Scacchiera Mondiale",
+    "risoluzione": "1920x1080",
+    "fps": 30,
+    "tema": "scuro"
+  },
+  "scene": [
+    {
+      "id": 1,
+      "durata": 7,
+      "titolo": "La Polveriera del Medio Oriente",
+      "sottotitolo": "Panoramica Regionale",
+      "mappa": {
+        "centro": { "lat": 28, "lon": 42 },
+        "zoom": 3,
+        "sfondo": "#1a1a2e",
+        "oceani": "#0f3460"
+      },
+      "paesi": [
+        {
+          "nome": "Israel",
+          "colore": "#3498db",
+          "opacita": 0.85,
+          "etichetta": "Israele",
+          "animazione": "fade_in"
+        },
+        {
+          "nome": "Iran",
+          "colore": "#27ae60",
+          "opacita": 0.7,
+          "etichetta": "Iran",
+          "animazione": "fade_in"
+        },
+        {
+          "nome": "Saudi Arabia",
+          "colore": "#f1c40f",
+          "opacita": 0.6,
+          "etichetta": "Arabia Saudita",
+          "animazione": "fade_in"
+        },
+        {
+          "nome": "Turkey",
+          "colore": "#e74c3c",
+          "opacita": 0.55,
+          "etichetta": "Turchia",
+          "animazione": "fade_in"
+        },
+        {
+          "nome": "Iraq",
+          "colore": "#8e44ad",
+          "opacita": 0.55,
+          "etichetta": "Iraq",
+          "animazione": "nessuna"
+        },
+        {
+          "nome": "Syria",
+          "colore": "#e74c3c",
+          "opacita": 0.6,
+          "etichetta": "Siria",
+          "animazione": "nessuna"
+        },
+        {
+          "nome": "Lebanon",
+          "colore": "#e74c3c",
+          "opacita": 0.7,
+          "etichetta": "Libano",
+          "animazione": "nessuna"
+        },
+        {
+          "nome": "Yemen",
+          "colore": "#c0392b",
+          "opacita": 0.7,
+          "etichetta": "Yemen",
+          "animazione": "nessuna"
+        }
+      ],
+      "frecce": [],
+      "icone": [
+        {
+          "tipo": "zona_conflitto",
+          "lat": 31.5,
+          "lon": 34.5,
+          "etichetta": "Gaza"
+        },
+        {
+          "tipo": "zona_conflitto",
+          "lat": 33.5,
+          "lon": 35.8,
+          "etichetta": "Libano Sud"
+        }
+      ],
+      "testo_overlay": [
+        {
+          "testo": "La regione più instabile del pianeta",
+          "posizione": "alto",
+          "dimensione": 28,
+          "colore": "#f1c40f",
+          "sfondo": "#0f3460"
+        }
+      ],
+      "transizione": {
+        "tipo": "fade",
+        "durata": 0.8
+      }
+    },
+    {
+      "id": 2,
+      "durata": 9,
+      "titolo": "Il Conflitto Gaza — Operazione IDF",
+      "sottotitolo": "Ottobre 2023 – 2024",
+      "mappa": {
+        "centro": { "lat": 31.5, "lon": 34.8 },
+        "zoom": 9,
+        "sfondo": "#1a1a2e",
+        "oceani": "#0f3460"
+      },
+      "paesi": [
+        {
+          "nome": "Israel",
+          "colore": "#3498db",
+          "opacita": 0.7,
+          "etichetta": "Israele",
+          "animazione": "nessuna"
+        }
+      ],
+      "frecce": [
+        {
+          "da": { "lat": 31.8, "lon": 34.9 },
+          "a":  { "lat": 31.4, "lon": 34.4 },
+          "colore": "#3498db",
+          "spessore": 4,
+          "etichetta": "Operazione IDF",
+          "stile": "solido"
+        },
+        {
+          "da": { "lat": 31.35, "lon": 34.35 },
+          "a":  { "lat": 31.55, "lon": 34.7 },
+          "colore": "#e74c3c",
+          "spessore": 3,
+          "etichetta": "Razzi Hamas",
+          "stile": "tratteggiato"
+        }
+      ],
+      "icone": [
+        {
+          "tipo": "zona_conflitto",
+          "lat": 31.5,
+          "lon": 34.47,
+          "etichetta": "Striscia di Gaza"
+        },
+        {
+          "tipo": "base_militare",
+          "lat": 31.75,
+          "lon": 34.75,
+          "etichetta": "IDF"
+        }
+      ],
+      "testo_overlay": [],
+      "transizione": {
+        "tipo": "fade",
+        "durata": 0.5
+      }
+    },
+    {
+      "id": 3,
+      "durata": 9,
+      "titolo": "L'Asse della Resistenza — Rete Iraniana",
+      "sottotitolo": "Iran e i suoi alleati proxy",
+      "mappa": {
+        "centro": { "lat": 30, "lon": 43 },
+        "zoom": 3.2,
+        "sfondo": "#1a1a2e",
+        "oceani": "#0f3460"
+      },
+      "paesi": [
+        {
+          "nome": "Iran",
+          "colore": "#27ae60",
+          "opacita": 0.8,
+          "etichetta": "Iran",
+          "animazione": "fade_in"
+        },
+        {
+          "nome": "Syria",
+          "colore": "#27ae60",
+          "opacita": 0.55,
+          "etichetta": "Siria (alleata)",
+          "animazione": "fade_in"
+        },
+        {
+          "nome": "Iraq",
+          "colore": "#27ae60",
+          "opacita": 0.4,
+          "etichetta": "Milizie Iraq",
+          "animazione": "fade_in"
+        },
+        {
+          "nome": "Yemen",
+          "colore": "#27ae60",
+          "opacita": 0.6,
+          "etichetta": "Houthi",
+          "animazione": "fade_in"
+        },
+        {
+          "nome": "Lebanon",
+          "colore": "#27ae60",
+          "opacita": 0.55,
+          "etichetta": "Hezbollah",
+          "animazione": "nessuna"
+        },
+        {
+          "nome": "Israel",
+          "colore": "#3498db",
+          "opacita": 0.7,
+          "etichetta": "Israele",
+          "animazione": "nessuna"
+        }
+      ],
+      "frecce": [
+        {
+          "da": { "lat": 32.4, "lon": 53.7 },
+          "a":  { "lat": 33.5, "lon": 35.8 },
+          "colore": "#27ae60",
+          "spessore": 3,
+          "etichetta": "Armi a Hezbollah",
+          "stile": "punteggiato"
+        },
+        {
+          "da": { "lat": 32.4, "lon": 53.7 },
+          "a":  { "lat": 15.4, "lon": 44.2 },
+          "colore": "#27ae60",
+          "spessore": 3,
+          "etichetta": "Armi agli Houthi",
+          "stile": "punteggiato"
+        },
+        {
+          "da": { "lat": 15.4, "lon": 44.2 },
+          "a":  { "lat": 27.0, "lon": 35.0 },
+          "colore": "#e74c3c",
+          "spessore": 3,
+          "etichetta": "Attacchi Mar Rosso",
+          "stile": "solido"
+        }
+      ],
+      "icone": [
+        {
+          "tipo": "base_militare",
+          "lat": 32.4,
+          "lon": 53.7,
+          "etichetta": "Teheran"
+        },
+        {
+          "tipo": "zona_conflitto",
+          "lat": 27.0,
+          "lon": 35.0,
+          "etichetta": "Mar Rosso"
+        },
+        {
+          "tipo": "porto",
+          "lat": 12.8,
+          "lon": 45.0,
+          "etichetta": "Stretto Bab el-Mandeb"
+        }
+      ],
+      "testo_overlay": [
+        {
+          "testo": "L'Iran comanda una rete di proxy che destabilizza la regione",
+          "posizione": "alto",
+          "dimensione": 26,
+          "colore": "#e8e8f0",
+          "sfondo": "#0a2010"
+        }
+      ],
+      "transizione": {
+        "tipo": "fade",
+        "durata": 0.6
+      }
+    },
+    {
+      "id": 4,
+      "durata": 8,
+      "titolo": "Le Risorse Energetiche in Gioco",
+      "sottotitolo": "Petrolio, gas e rotte marittime",
+      "mappa": {
+        "centro": { "lat": 26, "lon": 52 },
+        "zoom": 3,
+        "sfondo": "#1a1a2e",
+        "oceani": "#0f3460"
+      },
+      "paesi": [
+        {
+          "nome": "Saudi Arabia",
+          "colore": "#f1c40f",
+          "opacita": 0.75,
+          "etichetta": "Arabia Saudita",
+          "animazione": "fade_in"
+        },
+        {
+          "nome": "Iran",
+          "colore": "#f1c40f",
+          "opacita": 0.65,
+          "etichetta": "Iran",
+          "animazione": "fade_in"
+        },
+        {
+          "nome": "Iraq",
+          "colore": "#f1c40f",
+          "opacita": 0.6,
+          "etichetta": "Iraq",
+          "animazione": "fade_in"
+        },
+        {
+          "nome": "Kuwait",
+          "colore": "#f1c40f",
+          "opacita": 0.7,
+          "etichetta": "Kuwait",
+          "animazione": "nessuna"
+        },
+        {
+          "nome": "United Arab Emirates",
+          "colore": "#f1c40f",
+          "opacita": 0.65,
+          "etichetta": "UAE",
+          "animazione": "nessuna"
+        }
+      ],
+      "frecce": [
+        {
+          "da": { "lat": 26.5, "lon": 56.3 },
+          "a":  { "lat": 22.0, "lon": 63.0 },
+          "colore": "#f1c40f",
+          "spessore": 4,
+          "etichetta": "Rotta petrolio verso Asia",
+          "stile": "solido"
+        },
+        {
+          "da": { "lat": 26.5, "lon": 56.3 },
+          "a":  { "lat": 12.8, "lon": 45.0 },
+          "colore": "#f1c40f",
+          "spessore": 4,
+          "etichetta": "Stretto di Hormuz",
+          "stile": "solido"
+        }
+      ],
+      "icone": [
+        {
+          "tipo": "risorsa",
+          "lat": 23.5,
+          "lon": 45.0,
+          "etichetta": "Giacimenti Saudi"
+        },
+        {
+          "tipo": "risorsa",
+          "lat": 30.0,
+          "lon": 47.8,
+          "etichetta": "Petrolio Iraq"
+        },
+        {
+          "tipo": "porto",
+          "lat": 26.5,
+          "lon": 56.3,
+          "etichetta": "Stretto di Hormuz"
+        }
+      ],
+      "testo_overlay": [
+        {
+          "testo": "Il 20% del petrolio mondiale transita dallo Stretto di Hormuz",
+          "posizione": "basso",
+          "dimensione": 30,
+          "colore": "#f1c40f",
+          "sfondo": "#0f3460"
+        }
+      ],
+      "transizione": {
+        "tipo": "fade",
+        "durata": 1.0
+      }
+    }
+  ]
+}
