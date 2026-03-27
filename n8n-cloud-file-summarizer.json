@@ -1,0 +1,247 @@
+{
+  "name": "Cloud File Summarizer - Gemini + Google Drive",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Professional File Summarizer",
+        "formDescription": "Carica un file di testo, PDF o Word per ricevere un riassunto esecutivo generato dall'AI.",
+        "responseMode": "lastNode",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "File da analizzare",
+              "fieldType": "file",
+              "acceptFileTypes": ".txt,.pdf,.docx,.md",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Istruzioni aggiuntive (opzionale)",
+              "fieldType": "textarea",
+              "placeholder": "Es: Concentrati sulle scadenze e le azioni da compiere",
+              "requiredField": false
+            }
+          ]
+        }
+      },
+      "id": "cloud-node-0001",
+      "name": "Form Upload Trigger",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [240, 300],
+      "webhookId": "file-summarizer-form"
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "encoding": "utf8"
+      },
+      "id": "cloud-node-0002",
+      "name": "Extract Text from File",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "prompt": {
+          "values": {
+            "promptType": "define",
+            "text": "=Sei un analista esperto. Analizza il seguente documento e produci un RIASSUNTO ESECUTIVO strutturato in Markdown.\n\n## Sezioni richieste:\n- **Obiettivi principali**: Quali sono i punti chiave e gli obiettivi del documento?\n- **Date e scadenze importanti**: Elenca tutte le date rilevanti menzionate.\n- **Azioni da compiere**: Quali sono le prossime azioni o decisioni richieste?\n- **Conclusioni**: Sintesi finale in 3-5 righe.\n\n{{ $json[\"Istruzioni aggiuntive (opzionale)\"] ? '\\n**Istruzioni specifiche:** ' + $json[\"Istruzioni aggiuntive (opzionale)\"] + '\\n' : '' }}\n\n---\n**Documento da analizzare:**\n{{ $json.text }}"
+          }
+        }
+      },
+      "id": "cloud-node-0003",
+      "name": "Basic LLM Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-1.5-flash",
+        "options": {
+          "temperature": 0.2,
+          "maxOutputTokens": 2048
+        }
+      },
+      "id": "cloud-node-0004",
+      "name": "Google Gemini 1.5 Flash",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [680, 500],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "INSERISCI_ID_CREDENZIALI_GEMINI",
+          "name": "Google Gemini (AI Studio)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Genera nome file dinamico con timestamp\nconst now = new Date();\nconst day = String(now.getDate()).padStart(2, '0');\nconst month = String(now.getMonth() + 1).padStart(2, '0');\nconst year = now.getFullYear();\nconst hours = String(now.getHours()).padStart(2, '0');\nconst minutes = String(now.getMinutes()).padStart(2, '0');\n\nconst filename = `riassunto_${day}-${month}-${year}_${hours}-${minutes}.txt`;\n\n// Recupera il testo del riassunto (LLM Chain output)\nconst summaryText = $input.first().json.text \n  || $input.first().json.response\n  || $input.first().json.output\n  || 'Errore: nessun riassunto generato.';\n\nreturn [\n  {\n    json: {\n      filename: filename,\n      summaryText: summaryText,\n      generatedAt: now.toISOString()\n    }\n  }\n];"
+      },
+      "id": "cloud-node-0005",
+      "name": "Generate Dynamic Filename",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "summaryText",
+        "encoding": "utf8",
+        "fileName": "={{ $json.filename }}"
+      },
+      "id": "cloud-node-0006",
+      "name": "Convert Summary to File",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "name": "={{ $json.filename }}",
+        "driveId": {
+          "__rl": true,
+          "value": "My Drive",
+          "mode": "list"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "INSERISCI_ID_CARTELLA_GOOGLE_DRIVE",
+          "mode": "id"
+        },
+        "options": {
+          "mimeType": "text/plain"
+        }
+      },
+      "id": "cloud-node-0007",
+      "name": "Upload to Google Drive",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [1340, 300],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "INSERISCI_ID_CREDENZIALI_GDRIVE",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ '✅ Riassunto completato!\\n\\nFile salvato: ' + $('Generate Dynamic Filename').first().json.filename + '\\n\\nData: ' + $('Generate Dynamic Filename').first().json.generatedAt }}"
+      },
+      "id": "cloud-node-0008",
+      "name": "Form Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1560, 300]
+    }
+  ],
+  "connections": {
+    "Form Upload Trigger": {
+      "main": [
+        [
+          {
+            "node": "Extract Text from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Text from File": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini 1.5 Flash": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Generate Dynamic Filename",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Dynamic Filename": {
+      "main": [
+        [
+          {
+            "node": "Convert Summary to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert Summary to File": {
+      "main": [
+        [
+          {
+            "node": "Upload to Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload to Google Drive": {
+      "main": [
+        [
+          {
+            "node": "Form Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "n8nVersion": "1.0.0",
+    "notes": "SETUP GUIDE:\n\n1. GOOGLE GEMINI API KEY:\n   - Vai su https://aistudio.google.com/app/apikey\n   - Crea una chiave gratuita\n   - In n8n: Settings > Credentials > Add > Google Gemini(PaLm) Api\n   - Incolla la chiave nel campo 'API Key'\n   - Sostituisci 'INSERISCI_ID_CREDENZIALI_GEMINI' con l'ID generato\n\n2. GOOGLE DRIVE:\n   - In n8n: Settings > Credentials > Add > Google Drive OAuth2 API\n   - Accedi col tuo account Google\n   - Per trovare l'ID della cartella: apri la cartella su Drive,\n     copia l'ultima parte dell'URL (dopo /folders/)\n   - Sostituisci 'INSERISCI_ID_CARTELLA_GOOGLE_DRIVE' con quell'ID\n\n3. USO DEL WORKFLOW:\n   - Attiva il workflow (toggle in alto a destra)\n   - Copia il link del Form (pulsante 'Test workflow' > copia URL)\n   - Apri il link nel browser\n   - Carica il tuo file e clicca Invia\n   - Il riassunto appare su Google Drive dopo ~10-30 secondi\n\n4. INVIO VIA WEBHOOK (per integrazioni esterne):\n   POST <WEBHOOK_URL>\n   Content-Type: multipart/form-data\n   Body: file=<binary_file>"
+  },
+  "id": "cloud-professional-file-summarizer",
+  "tags": [
+    {
+      "name": "AI"
+    },
+    {
+      "name": "Cloud"
+    },
+    {
+      "name": "Gemini"
+    },
+    {
+      "name": "Google Drive"
+    }
+  ]
+}
